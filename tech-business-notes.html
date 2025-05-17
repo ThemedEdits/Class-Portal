@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech & Business Writing Notes | FUUAST BSCS 3D</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reuse your existing styles, and add these: */
+        .notes-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .notes-header {
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .notes-header h1 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        
+        .notes-header p {
+            color: #7f8c8d;
+        }
+        
+        .files-list {
+            display: grid;
+            gap: 1rem;
+        }
+        
+        .file-item {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .file-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .file-icon.pptx {
+            background: #d24625;
+        }
+        
+        .file-info {
+            flex-grow: 1;
+        }
+        
+        .file-info h3 {
+            margin: 0 0 0.3rem;
+            color: #2c3e50;
+        }
+        
+        .file-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .download-btn {
+            background: #2ecc71;
+            text-decoration: none;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: #27ae60;
+        }
+        
+        @media (max-width: 768px) {
+            .file-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .file-meta {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Include your existing header/navigation -->
+    
+    <div class="notes-container">
+        <a href="index.html#subjects" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Subjects
+        </a>
+        
+        <div class="notes-header">
+            <h1>Tech & Business Writing</h1>
+            <p>Download all study materials for this subject</p>
+        </div>
+        
+        <div class="files-list">
+            <!-- Example PDF File -->
+            <div class="file-item">
+                <div class="file-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="file-info">
+                    <h3>Technical Report Writing Guide</h3>
+                    <div class="file-meta">
+                        <span><i class="fas fa-file"></i> PDF</span>
+                        <span><i class="fas fa-weight-hanging"></i> 2.4 MB</span>
+                        <span><i class="fas fa-calendar-alt"></i> Updated: 15 Oct 2023</span>
+                    </div>
+                </div>
+                <a href="/all pdfs/Memo Report Format (_.pdf).pdf" download class="download-btn">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </div>
+            
+            <!-- Example PPTX File -->
+            <div class="file-item">
+                <div class="file-icon pptx">
+                    <i class="fas fa-file-powerpoint"></i>
+                </div>
+                <div class="file-info">
+                    <h3>Business Communication Slides</h3>
+                    <div class="file-meta">
+                        <span><i class="fas fa-file"></i> PPTX</span>
+                        <span><i class="fas fa-weight-hanging"></i> 5.1 MB</span>
+                        <span><i class="fas fa-calendar-alt"></i> Updated: 10 Oct 2023</span>
+                    </div>
+                </div>
+                <a href="path/to/business-comm-slides.pptx" download class="download-btn">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </div>
+            
+            <!-- Add more files as needed -->
+            <div class="file-item">
+                <div class="file-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="file-info">
+                    <h3>Email Writing Guidelines</h3>
+                    <div class="file-meta">
+                        <span><i class="fas fa-file"></i> PDF</span>
+                        <span><i class="fas fa-weight-hanging"></i> 1.2 MB</span>
+                        <span><i class="fas fa-calendar-alt"></i> Updated: 5 Oct 2023</span>
+                    </div>
+                </div>
+                <a href="path/to/email-guidelines.pdf" download class="download-btn">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Include your existing footer -->
+</body>
+</html>

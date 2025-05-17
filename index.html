@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUUAST BSCS 3D | Academic Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            color: #3498db;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        .stat-item i {
+            color: #3498db;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 1.5px solid white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                gap: 1rem;
+            }
+
+            .stat-item {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3rem 0;
+                text-align: left;
+            }
+
+            .hero-content {
+                align-items: flex-start;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                text-align: left;
+            }
+
+            .hero-stats {
+                justify-content: flex-start;
+            }
+
+            .hero-actions {
+                justify-content: flex-start;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+
+        /* Subjects Section */
+        .subjects {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .subject-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .subject-img {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .subject-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .subject-content {
+            padding: 1.5rem;
+        }
+
+        .subject-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .subject-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .subject-links {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .subject-links a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .subject-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Teachers Section */
+        .teachers {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+
+        .teachers .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .teachers .section-title h2 {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .teachers .section-title p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .teacher-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .teacher-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .teacher-img img {
+            width: 100%;
+            height: 100%;
+            background-color: #2c3e50;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .teacher-info {
+            padding: 1.5rem;
+        }
+
+        .teacher-info h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .subject {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .qualification {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .teacher-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #34495e;
+        }
+
+        .teacher-contact span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .teacher-contact i {
+            color: #3498db;
+            width: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .teachers-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .teachers {
+                padding: 3rem 0;
+            }
+
+            .teachers .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .teacher-img {
+                height: 180px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .teachers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .teachers .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .teachers .section-title p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Enhanced Syllabus Section Styles */
+        .syllabus {
+            padding: 4rem 0;
+            background-color: #f8fafc;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .accordion {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .accordion-item {
+            background-color: white;
+            border-radius: 10px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            /* transform: translateY(-2px); */
+            border-left-color: #3498db;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-header:hover {
+            background-color: #f8fafc;
+        }
+
+        .subject-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #e3f2fd;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            color: #3498db;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .accordion-header h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-right: auto;
+        }
+
+        .accordion-indicator {
+            color: #7f8c8d;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 1500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .syllabus-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            flex-wrap: wrap;
+        }
+
+        .syllabus-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .accordion-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .accordion-content li {
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #34495e;
+            transition: all 0.2s ease;
+        }
+
+        .accordion-content li:hover {
+            color: #2c3e50;
+            padding-left: 5px;
+        }
+
+        .accordion-content li i {
+            color: #3498db;
+            width: 20px;
+            text-align: center;
+        }
+
+        .syllabus-footer {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+            text-align: right;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #3498db;
+            color: #3498db;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-outline:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .accordion-header {
+                padding: 1.2rem;
+            }
+
+            .subject-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+                margin-right: 1rem;
+            }
+
+            .accordion-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .syllabus-meta {
+                gap: 1rem;
+            }
+
+            .accordion-content li {
+                font-size: 0.95rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .syllabus {
+                padding: 3rem 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+            }
+
+            
+
+            .accordion-header h3 {
+                width: calc(100% - 60px);
+            }
+
+            .syllabus-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .syllabus-footer {
+                text-align: center;
+            }
+        }
+
+        /* Updates Section */
+        .updates {
+            padding: 4rem 0;
+        }
+
+        .update-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .update-icon {
+            background-color: var(--light);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .update-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .update-content p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .update-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            text-decoration: none;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-column ul li a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                transition: left 0.3s ease;
+                gap: 1.5rem;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .hero {
+                height: 90vh;
+            }
+
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .update-card {
+                flex-direction: column;
+            }
+
+            .update-icon {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-text h1 {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                height: 100vh;
+            }
+
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .subject-content h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <!-- <img src="https://www.fuuast.edu.pk/wp-content/uploads/2022/02/cropped-FUUAST-Logo-1-32x32.png" alt="FUUAST Logo"> -->
+                <div class="logo-text">
+                    <h1>FUUAST BSCS</h1>
+                    <p>3rd Semester - Section D</p>
+                </div>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#subjects"><i class="fas fa-book"></i> Subjects</a></li>
+                    <li><a href="#teachers"><i class="fas fa-user-graduate"></i> Faculty</a></li>
+                    <li><a href="#syllabus"><i class="fas fa-clipboard-list"></i> Syllabus</a></li>
+                    <li><a href="#updates"><i class="fas fa-bullhorn"></i> Updates</a></li>
+                </ul>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>FUUAST BSCS 3<sup>rd</sup> Semester</h1>
+                <h2>Section D Academic Portal</h2>
+                <p class="hero-description">Your centralized platform for all academic resources, updates, and materials
+                    for Computer Science students.</p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-book-open"></i>
+                        <span>5 Subjects</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span>50+ Students</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-file-pdf"></i>
+                        <span>100+ Resources</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <a href="#teachers" class="btn btn-primary">
+                    <i class="fas fa-book"></i> Explore faculty
+                </a>
+                <a href="#updates" class="btn btn-secondary">
+                    <i class="fas fa-bullhorn"></i> Latest Updates
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Subjects Section -->
+    <section class="subjects" id="subjects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Subjects</h2>
+            </div>
+            <div class="subjects-grid">
+                <!-- Subject 1 -->
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Tech & Business Writing">
+                    </div>
+                    <div class="subject-content">
+                        <h3>Tech & Business Writing</h3>
+                        <p>Learn effective communication techniques for technical and business environments.</p>
+                        <div class="subject-links">
+                            <a href="tech-business-notes.html" class="notes-link"><i class="fas fa-download"></i>
+                                Notes</a>
+                            <a href="#syllabus"><i class="fas fa-info-circle"></i> Syllabus</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subject 2 -->
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Data Structures & Algorithms">
+                    </div>
+                    <div class="subject-content">
+                        <h3>Data Structures & Algorithms</h3>
+                        <p>Master fundamental data structures and algorithms for efficient problem solving.</p>
+                        <div class="subject-links">
+                            <a href="dsa-notes.html" class="notes-link"><i class="fas fa-download"></i> Notes</a>
+                            <a href="#syllabus"><i class="fas fa-info-circle"></i> Syllabus</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subject 3 -->
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Discrete Structures">
+                    </div>
+                    <div class="subject-content">
+                        <h3>Discrete Structures</h3>
+                        <p>Explore mathematical structures fundamental to computer science.</p>
+                        <div class="subject-links">
+                            <a href="discrete-notes.html" class="notes-link"><i class="fas fa-download"></i> Notes</a>
+                            <a href="#syllabus"><i class="fas fa-info-circle"></i> Syllabus</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subject 4 -->
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <img src="https://images.unsplash.com/photo-1636489953081-4477a604b2f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                            alt="Differential Equations">
+                    </div>
+                    <div class="subject-content">
+                        <h3>Differential Equations</h3>
+                        <p>Study equations involving derivatives and their applications in CS.</p>
+                        <div class="subject-links">
+                            <a href="de-notes.html" class="notes-link"><i class="fas fa-download"></i> Notes</a>
+                            <a href="#syllabus"><i class="fas fa-info-circle"></i> Syllabus</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subject 5 -->
+                <div class="subject-card">
+                    <div class="subject-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                            alt="Computer Organization & Architecture">
+                    </div>
+                    <div class="subject-content">
+                        <h3>Computer Organization & Architecture</h3>
+                        <p>Understand computer system organization and architectural concepts.</p>
+                        <div class="subject-links">
+                            <a href="coa-notes.html" class="notes-link"><i class="fas fa-download"></i> Notes</a>
+                            <a href="#syllabus"><i class="fas fa-info-circle"></i> Syllabus</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section class="teachers" id="teachers">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Faculty</h2>
+                <p>Meet the dedicated teachers guiding us through this semester</p>
+            </div>
+
+            <div class="teachers-grid">
+                <!-- Teacher 1 -->
+                <div class="teacher-card">
+                    <div class="teacher-img">
+                        <img src="atc-0444.png" alt="Tech & Business Teacher">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Ms. Shazia</h3>
+                        <p class="subject">Tech & Business Writing</p>
+                        <p class="qualification">PhD in Technical Communication</p>
+                        <div class="teacher-contact">
+                            <span><i class="fas fa-envelope"></i>–</span>
+                            <span><i class="fas fa-phone"></i>+92 312 1234567</span>
+                            <span><i class="fas fa-door-open"></i>Eng Department, room 01</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher 2 -->
+                <div class="teacher-card">
+                    <div class="teacher-img">
+                        <img src="atc-0444.png" alt="DSA Teacher">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Mr. Kashif Riffat</h3>
+                        <p class="subject">Data Structures & Algorithms</p>
+                        <p class="qualification">MS in Computer Science</p>
+                        <div class="teacher-contact">
+                            <span><i class="fas fa-envelope"></i> Kashifriffat@fuuast.edu.pk</span>
+                            <span><i class="fas fa-phone"></i>+92 312 1234567</span>
+                            <span><i class="fas fa-door-open"></i> CS Department, Room 3-A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher 3 -->
+                <div class="teacher-card">
+                    <div class="teacher-img">
+                        <img src="atc-0444.png" alt="Discrete Structures Teacher">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Dr. Khalid</h3>
+                        <p class="subject">Discrete Structures</p>
+                        <p class="qualification">PhD in Mathematics</p>
+                        <div class="teacher-contact">
+                            <span><i class="fas fa-envelope"></i> khalidansari@fuuast.edu.pk</span>
+                            <span><i class="fas fa-phone"></i>+92 312 1234567</span>
+                            <span><i class="fas fa-door-open"></i> CS Department, Room 6-A</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher 4 -->
+                <div class="teacher-card">
+                    <div class="teacher-img">
+                        <img src="atc-0444.png" alt="Differential Equations Teacher">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Mr. Siddiq</h3>
+                        <p class="subject">Differential Equations</p>
+                        <p class="qualification">MS in Applied Mathematics</p>
+                        <div class="teacher-contact">
+                            <span><i class="fas fa-envelope"></i> siddiq@fuuast.edu.pk</span>
+                            <span><i class="fas fa-phone"></i>+92 312 1234567</span>
+                            <span><i class="fas fa-door-open"></i> CS Department, Room 4-B</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher 5 -->
+                <div class="teacher-card">
+                    <div class="teacher-img">
+                        <img src="atc-0444.png" alt="COA Teacher">
+                    </div>
+                    <div class="teacher-info">
+                        <h3>Mr. Rehan</h3>
+                        <p class="subject">Computer Organization & Architecture</p>
+                        <p class="qualification">PhD in Computer Engineering</p>
+                        <div class="teacher-contact">
+                            <span><i class="fas fa-envelope"></i> rehankhan@fuuast.edu.pk</span>
+                            <span><i class="fas fa-phone"></i>+92 312 1234567</span>
+                            <span><i class="fas fa-door-open"></i> CS Department, Room 2-C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Syllabus Section -->
+    <section class="syllabus" id="syllabus">
+        <div class="container">
+            <div class="section-title">
+                <h2>Detailed Syllabus</h2>
+                <p>Click on each subject to explore the complete curriculum</p>
+            </div>
+            <div class="accordion">
+                <!-- Syllabus 1 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="subject-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Tech & Business Writing</h3>
+                        <div class="accordion-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="syllabus-meta">
+                            <span><i class="fas fa-book-open"></i> 8 Modules</span>
+                            <span><i class="fas fa-clock"></i> 15 Weeks</span>
+                            <span><i class="fas fa-star"></i> Core Subject</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-pen-fancy"></i> Introduction to Technical Writing</li>
+                            <li><i class="fas fa-comments"></i> Business Communication Principles</li>
+                            <li><i class="fas fa-file-signature"></i> Report Writing Techniques</li>
+                            <li><i class="fas fa-project-diagram"></i> Proposal Writing</li>
+                            <li><i class="fas fa-file-code"></i> Technical Documentation</li>
+                            <li><i class="fas fa-envelope"></i> Email Etiquette in Professional Settings</li>
+                            <li><i class="fas fa-presentation-screen"></i> Presentation Skills</li>
+                            <li><i class="fas fa-file-contract"></i> Resume and Cover Letter Writing</li>
+                        </ul>
+                        <div class="syllabus-footer">
+                            <a href="tech-business-notes.html" class="btn btn-outline">
+                                <i class="fas fa-download"></i> Download Materials
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Syllabus 2 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="subject-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3>Data Structures & Algorithms</h3>
+                        <div class="accordion-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="syllabus-meta">
+                            <span><i class="fas fa-book-open"></i> 9 Modules</span>
+                            <span><i class="fas fa-clock"></i> 18 Weeks</span>
+                            <span><i class="fas fa-star"></i> Core Subject</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-braille"></i> Arrays and Linked Lists</li>
+                            <li><i class="fas fa-layer-group"></i> Stacks and Queues</li>
+                            <li><i class="fas fa-tree"></i> Trees and Binary Search Trees</li>
+                            <li><i class="fas fa-share-alt"></i> Graphs and Graph Algorithms</li>
+                            <li><i class="fas fa-sort-amount-down"></i> Sorting Algorithms</li>
+                            <li><i class="fas fa-search"></i> Searching Algorithms</li>
+                            <li><i class="fas fa-key"></i> Hash Tables</li>
+                            <li><i class="fas fa-calculator"></i> Algorithm Analysis and Complexity</li>
+                            <li><i class="fas fa-infinity"></i> Recursion and Dynamic Programming</li>
+                        </ul>
+                        <div class="syllabus-footer">
+                            <a href="dsa-notes.html" class="btn btn-outline">
+                                <i class="fas fa-download"></i> Download Materials
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Syllabus 3 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="subject-icon">
+                            <i class="fas fa-superscript"></i>
+                        </div>
+                        <h3>Discrete Structures</h3>
+                        <div class="accordion-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="syllabus-meta">
+                            <span><i class="fas fa-book-open"></i> 8 Modules</span>
+                            <span><i class="fas fa-clock"></i> 16 Weeks</span>
+                            <span><i class="fas fa-star"></i> Core Subject</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check-double"></i> Logic and Propositional Calculus</li>
+                            <li><i class="fas fa-object-group"></i> Set Theory</li>
+                            <li><i class="fas fa-random"></i> Relations and Functions</li>
+                            <li><i class="fas fa-cubes"></i> Combinatorics</li>
+                            <li><i class="fas fa-share-alt"></i> Graph Theory</li>
+                            <li><i class="fas fa-calculator"></i> Algebraic Structures</li>
+                            <li><i class="fas fa-robot"></i> Finite State Machines</li>
+                            <li><i class="fas fa-redo"></i> Recurrence Relations</li>
+                        </ul>
+                        <div class="syllabus-footer">
+                            <a href="discrete-notes.html" class="btn btn-outline">
+                                <i class="fas fa-download"></i> Download Materials
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Syllabus 4 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="subject-icon">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                        <h3>Differential Equations</h3>
+                        <div class="accordion-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="syllabus-meta">
+                            <span><i class="fas fa-book-open"></i> 7 Modules</span>
+                            <span><i class="fas fa-clock"></i> 14 Weeks</span>
+                            <span><i class="fas fa-star"></i> Core Subject</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-sort-numeric-down"></i> First Order Differential Equations</li>
+                            <li><i class="fas fa-sort-numeric-up"></i> Higher Order Linear Equations</li>
+                            <li><i class="fas fa-wave-square"></i> Laplace Transforms</li>
+                            <li><i class="fas fa-list-ol"></i> Series Solutions</li>
+                            <li><i class="fas fa-laptop-code"></i> Numerical Methods</li>
+                            <li><i class="fas fa-border-all"></i> Partial Differential Equations</li>
+                            <li><i class="fas fa-laptop"></i> Applications in Computer Science</li>
+                        </ul>
+                        <div class="syllabus-footer">
+                            <a href="de-notes.html" class="btn btn-outline">
+                                <i class="fas fa-download"></i> Download Materials
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Syllabus 5 -->
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <div class="subject-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Computer Organization & Architecture</h3>
+                        <div class="accordion-indicator">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="syllabus-meta">
+                            <span><i class="fas fa-book-open"></i> 9 Modules</span>
+                            <span><i class="fas fa-clock"></i> 18 Weeks</span>
+                            <span><i class="fas fa-star"></i> Core Subject</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-microchip"></i> Digital Logic Circuits</li>
+                            <li><i class="fas fa-database"></i> Data Representation</li>
+                            <li><i class="fas fa-exchange-alt"></i> Register Transfer and Microoperations</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Processor Organization</li>
+                            <li><i class="fas fa-code"></i> Instruction Sets</li>
+                            <li><i class="fas fa-memory"></i> Memory Organization</li>
+                            <li><i class="fas fa-plug"></i> Input/Output Organization</li>
+                            <li><i class="fas fa-stream"></i> Pipeline and Vector Processing</li>
+                            <li><i class="fas fa-server"></i> Multiprocessors</li>
+                        </ul>
+                        <div class="syllabus-footer">
+                            <a href="coa-notes.html" class="btn btn-outline">
+                                <i class="fas fa-download"></i> Download Materials
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Updates Section -->
+    <section class="updates" id="updates">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Updates</h2>
+            </div>
+            <div class="update-card">
+                <div class="update-icon">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="update-content">
+                    <h3>Midterm Exam Schedule</h3>
+                    <p>The midterm exam schedule has been released. Please check the notice board or university portal
+                        for details.</p>
+                    <div class="update-meta">
+                        <span><i class="far fa-clock"></i> 2 days ago</span>
+                        <span><i class="fas fa-user"></i> Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="update-card">
+                <div class="update-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <div class="update-content">
+                    <h3>New Study Material Added</h3>
+                    <p>New notes for Data Structures & Algorithms (Chapter 3-5) have been uploaded. Download from the
+                        subjects section.</p>
+                    <div class="update-meta">
+                        <span><i class="far fa-clock"></i> 1 week ago</span>
+                        <span><i class="fas fa-user"></i> CR</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="update-card">
+                <div class="update-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="update-content">
+                    <h3>Class Representative Meeting</h3>
+                    <p>All class representatives are requested to attend a meeting with the department head on Friday at
+                        11 AM in CS Block.</p>
+                    <div class="update-meta">
+                        <span><i class="far fa-clock"></i> 2 weeks ago</span>
+                        <span><i class="fas fa-user"></i> Department</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>This portal is created by the Class Representative of BSCS 3rd Semester Section D, FUUAST, to
+                        facilitate classmates with academic resources and updates.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#subjects"><i class="fas fa-chevron-right"></i> Subjects</a></li>
+                        <li><a href="#syllabus"><i class="fas fa-chevron-right"></i> Syllabus</a></li>
+                        <li><a href="#updates"><i class="fas fa-chevron-right"></i> Updates</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>University Links</h3>
+                    <ul>
+                        <li><a href="https://www.fuuast.edu.pk/" target="_blank"><i class="fas fa-chevron-right"></i>
+                                FUUAST Official Website</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Student Portal</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> CS Department</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Academic Calendar</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 FUUAST BSCS 3D Academic Portal. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Enhanced Accordion Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                const indicator = item.querySelector('.accordion-indicator i');
+
+                header.addEventListener('click', () => {
+                    // Close all other items
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.querySelector('.accordion-content').classList.remove('active');
+                            otherItem.querySelector('.accordion-indicator i').classList.remove('fa-chevron-up');
+                            otherItem.querySelector('.accordion-indicator i').classList.add('fa-chevron-down');
+                        }
+                    });
+
+                    // Toggle current item
+                    content.classList.toggle('active');
+
+                    // Rotate icon
+                    if (content.classList.contains('active')) {
+                        indicator.classList.remove('fa-chevron-down');
+                        indicator.classList.add('fa-chevron-up');
+                    } else {
+                        indicator.classList.remove('fa-chevron-up');
+                        indicator.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to home on initial load and refresh
+        window.addEventListener('load', function () {
+            // Clear any hash from URL
+            history.replaceState(null, null, ' ');
+
+            // Scroll to home section
+            const homeSection = document.getElementById('home');
+            if (homeSection) {
+                // First jump to top immediately
+                window.scrollTo(0, 0);
+
+                // Then smooth scroll after tiny delay
+                setTimeout(() => {
+                    homeSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 50);
+            }
+        });
+
+        // Also handle when page is restored from cache
+        window.addEventListener('pageshow', function (event) {
+            if (event.persisted) {
+                const homeSection = document.getElementById('home');
+                if (homeSection) {
+                    homeSection.scrollIntoView();
+                }
+            }
+        });
+        
+    </script>
+</body>
+
+</html>
